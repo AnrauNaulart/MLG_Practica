@@ -1,0 +1,37 @@
+---
+title: "Practica MLG"
+author: "Arnau Nualart i Montse Garcia"
+date: "15/12/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Importació Dades i Neteja
+
+```{r}
+data <- read.csv("D:/Universitat/Cuart de carrera/Models Lineals Generalitzats/PRACTICA/Dades-20221215/data.csv", sep=";")
+head(data)
+data$visita<- factor(data$vis_bin, labels=c("No", "Si"))
+data$educacio<- factor(data$educacio, labels=c("primaris", "secundaris", "univ.", "post_univ."))
+data$treball<- factor(data$treball, labels= c("No", "Si"))
+data$dona<- factor(data$dona, labels=c("no", "si"))
+data$casat<- factor(data$casat, labels = c("no", "si"))
+data$autonom<- factor(data$autonom, labels=c("no","si"))
+data$c.edat <- cut(data$edat,breaks=c(24,34,44,54,65))   
+data$c.ingressos<- cut(data$ingressos, breaks= c(-1,2,4,6,25))
+data$id<- NULL
+data$temps<- factor(data$temps, labels=c("1 any", "2 anys", "3 anys", "4 anys", "5 anys"))
+```
+#Descriptiva de les Dades
+
+## Descriptiva Univariant de les variables
+
+```{r}
+summary(data)
+```
+
+
+
